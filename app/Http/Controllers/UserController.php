@@ -64,7 +64,8 @@ class UserController extends Controller
         // $request->users is an array of IDs, ex. [1, 2, 3]
 
         // Insert Eloquent statement here
-
+        $users = User::whereIn('id',$request->users);
+        $users->delete();
         return redirect('/')->with('success', 'Users deleted');
     }
 
